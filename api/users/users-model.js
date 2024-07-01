@@ -43,7 +43,7 @@ async function findBy(filter) {
     .where(filter)
 }
 
-function findById(user_id) {
+async function findById(user_id) {
   /**
     You will need to join two tables.
     Resolves to the user with the given user_id.
@@ -54,6 +54,11 @@ function findById(user_id) {
       "role_name": "instructor"
     }
    */
+  return await db('users u')
+    .select('user_id', 'username', 'role_name')
+    .join('roles r', 'u.role_id', 'r.role_id')
+    .where('user_id', user_id)
+    .first()
 }
 
 /**
