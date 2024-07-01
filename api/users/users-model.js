@@ -1,6 +1,6 @@
 const db = require('../../data/db-config.js');
 
-function find() {
+async function find() {
   /**
     You will need to join two tables.
     Resolves to an ARRAY with all users.
@@ -18,6 +18,9 @@ function find() {
       }
     ]
    */
+  return await db('users u')
+    .select('user_id', 'username', 'role_name')
+    .join('roles r', 'u.role_id', 'r.role_id')
 }
 
 function findBy(filter) {
