@@ -1,5 +1,5 @@
 // The component to display the list of users
-import React, { useState } from 'react'
+import React from 'react'
 
 function UserList({ users }) {
     return (
