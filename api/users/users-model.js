@@ -18,9 +18,9 @@ async function find() {
       }
     ]
    */
-  return await db('users u')
+  return await db('users as u')
     .select('user_id', 'username', 'role_name')
-    .join('roles r', 'u.role_id', 'r.role_id')
+    .join('roles as r', 'u.role_id', 'r.role_id')
 }
 
 async function findBy(filter) {
@@ -37,9 +37,9 @@ async function findBy(filter) {
       }
     ]
    */
-  return await db('users u')
+  return await db('users as u')
     .select('user_id', 'username', 'password', 'role_name')
-    .join('roles r', 'u.role_id', 'r.role_id')
+    .join('roles as r', 'u.role_id', 'r.role_id')
     .where(filter)
 }
 
@@ -54,9 +54,9 @@ async function findById(user_id) {
       "role_name": "instructor"
     }
    */
-  return await db('users u')
+  return await db('users as u')
     .select('user_id', 'username', 'role_name')
-    .join('roles r', 'u.role_id', 'r.role_id')
+    .join('roles as r', 'u.role_id', 'r.role_id')
     .where('user_id', user_id)
     .first()
 }
