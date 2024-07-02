@@ -15,7 +15,13 @@ function AuthForm({ onResponse, onError }) {
             body: JSON.stringify(credentials)
         })
             .then(res => res.json())
-            .then(onResponse)
+            .then(data => {
+                onResponse(data)
+                if (data.token) {
+                    setUsername('')
+                    setPassword('')
+                }
+            })
             .catch(onError)
     }
 
