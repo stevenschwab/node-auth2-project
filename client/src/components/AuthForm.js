@@ -1,7 +1,7 @@
 // The form for registration and login.
 import React, { useState } from 'react'
 
-function AuthForm({ onResponse, onError }) {
+function AuthForm({ onResponse, onError, token }) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -44,7 +44,7 @@ function AuthForm({ onResponse, onError }) {
                 />
             </div>
             <div>
-                <button onClick={handleSubmit('register')}>Register</button>
+                <button onClick={handleSubmit('register')} disabled={!!token}>Register</button>
                 <button onClick={handleSubmit('login')}>Log in</button>
             </div>
         </form>

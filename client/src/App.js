@@ -48,7 +48,7 @@ function App() {
 
   return (
     <div className='App'>
-      <AuthForm onResponse={handleResponse} onError={handleError} />
+      <AuthForm onResponse={handleResponse} onError={handleError} token={token} />
       <button onClick={logout}>Logout</button>
       <div id='message'>{message}</div>
       <UserList users={users} />
